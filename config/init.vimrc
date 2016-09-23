@@ -54,4 +54,13 @@ Plug 'honza/vim-snippets'
 
 " Multi cursor
 Plug 'vim-multiple-cursors'
+
+" WakaTime
+Plug 'wakatime/vim-wakatime'
+
+" Vim-Repeat
+Plug 'tpope/vim-repeat'
+
+" Vim-Gitgutter
+Plug 'airblade/vim-gitgutter'
 call plug#end()

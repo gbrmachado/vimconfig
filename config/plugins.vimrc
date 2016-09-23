@@ -1,15 +1,9 @@
 " Neomake
-autocmd! BufWritePost,BufEnter * Neomake
-let g:neomake_open_list = 2
 
-let g:neomake_javascript_jscs_maker = {
-    \ 'exe': 'jscs',
-    \ 'args': ['--no-color', '--preset', 'airbnb', '--reporter', 'inline', '--esnext'],
-    \ 'errorformat': '%f: line %l\, col %c\, %m',
-    \ }
-let g:neomake_javascript_enabled_makers = ['jscs']
-
-
+let g:neomake_javascript_eslint_exe = system('PATH=$(npm bin):$PATH && which eslint | tr -d "\n"')
+autocmd! BufWritePost * Neomake
+let g:neomake_javascript_enabled_makers = ['eslint']
+let g:neomake_logfile='/tmp/error.log'
 let g:neomake_warning_sign = {
   \ 'text': 'W',
   \ 'texthl': 'WarningMsg',
@@ -79,9 +73,25 @@ if exists('g:plugs["tern_for_vim"]')
 endif
 
 "----------------------------------------------------------------------------------------------"
+" CtrlP
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+"----------------------------------------------------------------------------------------------"
 
 " MultiCursor
+" let g:multi_cursor_use_default_mapping=0
 let g:multi_cursor_next_key='<C-d>'
-let g:multi_cursor_prev_key='<C-p>'
-let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
+" Prevent conflict with NeoComplete
+" Called once right before you start selecting multiple cursors
+
+" Vim Repeat
+"
+"
+" Ultisnips
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
